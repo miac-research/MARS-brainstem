@@ -264,9 +264,20 @@ def isSuffix(s):
         return re.sub('\.nii(\.gz)?$', '', s)
     else:
         raise argparse.ArgumentTypeError("String is not suited as suffix. Please check: %s"%(s))
-    
+
+info = (
+    "\nTo cite this method in your publications include:\n"
+    "B. Gesierich, L. Sander, et al. 2025. \"Extended technical and clinical validation of deep learning-based brainstem segmentation for application in neurodegenerative diseases\". Human Brain Mapping\n"
+    "Article DOI: 10.1002/hbm.70141\n"
+    "\nPlease note:\n"
+    "This method is NOT a medical device and for non-commercial, academic research use only!\n"
+    "Do NOT use these methods for diagnosis, prognosis, monitoring or any other purposes in clinical use.\n"
+)
+
 def iniParser():
-    parser = argparse.ArgumentParser(description="Predict brainstem subareas from T1w image")
+    parser = argparse.ArgumentParser(description="Predict brainstem subareas from T1w image",
+                                     epilog=info,
+                                     formatter_class=argparse.RawTextHelpFormatter)
     group0 = parser.add_argument_group()
     group0.add_argument("fnT1", type=isNIfTI, help="path to input T1w image NIfTI file (required)")
     group0.add_argument("-s", dest="suffix", type=isSuffix, default='_brainstem', help="suffix appended to input file path (before extension), in order to create path to wich to write brainstem mask (defaults to '_brainstem')")

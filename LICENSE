@@ -6,5 +6,16 @@ IMPORTANT: This work is not a medical device and for research use only!
 Do NOT use this work for diagnosis, prognosis, monitoring or any other
 purposes in clinical use.
 
+Please note that the license does not cover any commercial use (defined
+as use for which any financial return is received). If you are interested
+in commercial use, please contact the corresponding author.
+
 The use of this work needs to be acknowledged through proper citation:
-To be added
+
+B. Gesierich, L. Sander, et al. 2025. Extended technical and clinical 
+validation of deep learning-based brainstem segmentation for application 
+in neurodegenerative diseases. Human Brain Mapping. 
+DOI: https://doi.org/10.1002/hbm.70141
+
+Please also note the licenses of redistributed software in our images.
+See README file for details.

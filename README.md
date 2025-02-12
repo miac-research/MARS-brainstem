@@ -4,9 +4,9 @@ This repository contains the code required to build the container images of two 
 
 The methods are described in detail in the following publication: 
  
-> Submitted. To be added.
+> **B. Gesierich, L. Sander, et al. 2025. Extended technical and clinical validation of deep learning-based brainstem segmentation for application in neurodegenerative diseases. Human Brain Mapping. DOI: [10.1002/hbm.70141](https://doi.org/10.1002/hbm.70141).**
 
-Please make sure to cite this publication when using the methods, and please note that the license does not cover any commercial use (defined as use for which any financial return is received).
+Please ensure to cite this publication when using the methods, and please note that the license does not cover any commercial use (defined as use for which any financial return is received). Please also cite the underlying deep learning method (nnU-Net, DOI: [10.1038/s41592-020-01008-z](https://doi.org/10.1038/s41592-020-01008-z) or MD-GRU, DOI: [10.1007/978-3-319-75238-9_3](https://doi.org/10.1007/978-3-319-75238-9_3)).
 
 > [!CAUTION]
 > These methods are **NOT medical devices** and **for non-commercial, academic research use only!**  
@@ -20,7 +20,7 @@ In general, we recommend the nnU-Net algorithm (please see our publication for a
 
 ### Hardware requirements
 
-While the inference can be run on CPU (>8 cores recommended), an NVIDIA GPU will greatly accelerate the calculation. The pre-built images use CUDA 12 and can thus support a wide range of NVIDIA GPUs from compute capability 5.0 (Maxwell generation, 2014) to 9.0 (current generation). A minimum of 8 GB GPU memory is required.
+While the inference can be run on CPU (>8 cores recommended), an NVIDIA GPU will greatly accelerate the calculation. The pre-built images use CUDA 12 and can thus support a wide range of NVIDIA GPUs from compute capability 5.0 (Maxwell generation, 2014) to 9.0 (H100, RTX 6000 Ada). A minimum of 8 GB GPU memory is required.
 
 ### nnU-Net algorithm using Apptainer
 
@@ -78,10 +78,17 @@ docker run --rm brainstem-mdgru:latest -h
 
 ## Building the container images yourself
 
-If you do not want to use the pre-built images, you can build them yourself locally using the provided Dockerfiles in the `mdgru` and `nnunet` folders.
+If you prefer to build the container images yourself, you can use the provided Dockerfiles in the `mdgru` and `nnunet` folders.
 
-1. Download the mdgru or nnunet Dockerfile and place it into a local folder.
+1. Download the mdgru or nnunet Dockerfile and place it into a folder.
 2. In this folder, run `docker build -t brainstem-{mdgru/nnunet} .`
 
 > [!NOTE]
 > During building, multiple external sources need to be used, e.g., base images are downloaded from the NVIDIA NGC registry, scripts are download from this Github repository, and larger model files are downloaded from Zenodo. Make sure you can access all required external sources in your build environment.
+
+## Licenses of redistributed software
+
+Please note the license terms of software components that we redistribute within our container images:
+
+- [nnU-Net](https://github.com/MIC-DKFZ/nnUNet?tab=Apache-2.0-1-ov-file)
+- [MD-GRU](https://github.com/zubata88/mdgru?tab=LGPL-2.1-1-ov-file)

@@ -2,7 +2,7 @@ FROM nvcr.io/nvidia/cuda:12.1.1-base-ubuntu22.04
 RUN adduser --system --no-create-home nonroot
 
 LABEL org.opencontainers.image.source="https://github.com/miac-research/dl-brainstem"
-LABEL version="1.0.1"
+LABEL version="1.0.2"
 LABEL maintainer="MIAC"
 
 # Create folder structure required by nnU-Net

@@ -1,9 +1,12 @@
 FROM nvcr.io/nvidia/tensorflow:23.03-tf1-py3
 RUN adduser --system --no-create-home nonroot
 
-LABEL org.opencontainers.image.source="https://github.com/miac-research/dl-brainstem"
+LABEL org.opencontainers.image.authors="https://miac.swiss"
+LABEL org.opencontainers.image.source="https://github.com/miac-research/MARS-brainstem"
+LABEL org.opencontainers.image.url="https://github.com/miac-research/MARS-brainstem"
+LABEL org.opencontainers.image.description="Ready-to-use container image for MARS-brainstem using MD-GRU"
+LABEL org.opencontainers.image.version="1.0.1"
 LABEL version="1.0.1"
-LABEL maintainer="MIAC"
 
 ENV PIP_DISABLE_PIP_VERSION_CHECK=1 \
     DEBIAN_FRONTEND=noninteractive
@@ -35,7 +38,7 @@ RUN wget -nv -O brainstem_140000.data-00000-of-00001 https://zenodo.org/records/
 
 # Download Python pipeline script
 WORKDIR /opt/scripts/
-RUN wget -nv -O pipeline_mdgru.py https://raw.githubusercontent.com/miac-research/dl-brainstem/main/mdgru/pipeline_mdgru.py
+RUN wget -nv -O pipeline_mdgru.py https://raw.githubusercontent.com/miac-research/MARS-brainstem/main/mdgru/pipeline_mdgru.py
 
 # Entrypoint
 USER nonroot

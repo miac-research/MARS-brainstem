@@ -1,9 +1,12 @@
 FROM nvcr.io/nvidia/cuda:12.8.1-base-ubuntu22.04
 RUN adduser --system --no-create-home nonroot
 
-LABEL org.opencontainers.image.source="https://github.com/miac-research/dl-brainstem"
+LABEL org.opencontainers.image.authors="https://miac.swiss"
+LABEL org.opencontainers.image.source="https://github.com/miac-research/MARS-brainstem"
+LABEL org.opencontainers.image.url="https://github.com/miac-research/MARS-brainstem"
+LABEL org.opencontainers.image.description="Ready-to-use container image for MARS-brainstem using nnU-Net"
+LABEL org.opencontainers.image.version="1.0.3"
 LABEL version="1.0.3"
-LABEL maintainer="MIAC"
 
 # Create folder structure required by nnU-Net
 RUN mkdir -p /nnunet/raw \
@@ -51,7 +54,7 @@ RUN wget -nv -O nnUNet_brainstem.tar.gz https://zenodo.org/records/13323293/file
 
 # Download Python pipeline script
 WORKDIR /opt/scripts/
-RUN wget -nv -O pipeline_nnunet.py https://raw.githubusercontent.com/miac-research/dl-brainstem/main/nnunet/pipeline_nnunet.py
+RUN wget -nv -O pipeline_nnunet.py https://raw.githubusercontent.com/miac-research/MARS-brainstem/main/nnunet/pipeline_nnunet.py
 
 # Entrypoint
 USER nonroot

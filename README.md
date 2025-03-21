@@ -1,6 +1,8 @@
-# Container images for deep learning-based brainstem segmentation
+# MARS-brainstem: Deep learning-based brainstem segmentation
 
-This repository contains the code required to build the container images of two **deep learning-based brainstem segmentation methods**, based on nnU-net or MD-GRU.
+The **MIAC Automated Region Segmentation (MARS) for brainstem** is a state-of-the-art, deep learning-based segmentation tool that has undergone systematic validation, both technically and clinically.
+
+This repository includes ready-to-use, pre-built container images of two methods, based on [nnU-Net](https://github.com/MIC-DKFZ/nnUNet) or [MD-GRU](https://github.com/zubata88/mdgru), along with the code needed to build these images.
 
 The methods are described in detail in the following publication: 
  
@@ -14,13 +16,13 @@ Please ensure to cite this publication when using the methods, and please note t
 
 ## Using the pre-built container images
 
-Ready-to-use, pre-built images for nnU-Net and MD-GRU brainstem segmentaion are available for download from the [Github container registry](https://github.com/miac-research/dl-brainstem/packages). The images have been tested with Apptainer and Docker.  
+Ready-to-use, pre-built images are available for download from the [Github container registry](https://github.com/miac-research/dl-brainstem/packages). The images have been tested with Apptainer and Docker.  
 
 In general, we recommend the nnU-Net algorithm (please see our publication for a detailed comparison between the two algorithms) and using Apptainer (the standard container tool for scientific computing).
 
 ### Hardware requirements
 
-While the inference can be run on CPU (>8 cores recommended), an NVIDIA GPU will greatly accelerate the calculation. The pre-built images use CUDA 12 and can thus support a wide range of NVIDIA GPUs from compute capability 5.0 (Maxwell generation, 2014) to 9.0 (H100, RTX 6000 Ada). A minimum of 8 GB GPU memory is required.
+While the inference can be run on CPU (>8 cores recommended), an NVIDIA GPU will greatly accelerate the calculation. The pre-built images use CUDA 12 and can thus support a wide range of NVIDIA GPUs from compute capability 5.0 (Maxwell generation, 2014) to 12.0 (Blackwell generation, 2024) for the nnU-Net method. Please note that for the MD-GRU method, support is currently limited to compute capability 5.0 to 9.0 (Hopper generation, 2022). A minimum of 8 GB GPU memory is required.
 
 ### nnU-Net algorithm using Apptainer
 
@@ -92,3 +94,9 @@ Please note the license terms of software components that we redistribute within
 
 - [nnU-Net](https://github.com/MIC-DKFZ/nnUNet?tab=Apache-2.0-1-ov-file)
 - [MD-GRU](https://github.com/zubata88/mdgru?tab=LGPL-2.1-1-ov-file)
+
+## Funding
+
+Development and maintenance of this software is funded by the [Medical Image Analysis Center (MIAC AG)](https://miac.swiss).
+
+[![MIAC Logo](http://miac.swiss/gallery/normal/116/miaclogo@2x.png)](https://miac.swiss)

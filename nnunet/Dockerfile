@@ -1,8 +1,8 @@
-FROM nvcr.io/nvidia/cuda:12.1.1-base-ubuntu22.04
+FROM nvcr.io/nvidia/cuda:12.8.1-base-ubuntu22.04
 RUN adduser --system --no-create-home nonroot
 
 LABEL org.opencontainers.image.source="https://github.com/miac-research/dl-brainstem"
-LABEL version="1.0.2"
+LABEL version="1.0.3"
 LABEL maintainer="MIAC"
 
 # Create folder structure required by nnU-Net
@@ -22,9 +22,9 @@ ENV nnUNet_raw_data_base=/nnunet/raw \
 
 # Install OS dependencies and fix locale error in Apptainer
 RUN apt-get update -qq && apt-get install -y -q --no-install-recommends \
-	locales=2.35-0ubuntu3.8 \
-	python3=3.10.6-1~22.04 \
-	python3-pip=22.0.2+dfsg-1ubuntu0.4 \
+	locales=2.35-0ubuntu3.9 \
+	python3=3.10.6-1~22.04.1 \
+	python3-pip=22.0.2+dfsg-1ubuntu0.5 \
 	python-is-python3=3.9.2-2 \
     wget=1.21.2-2ubuntu1.1 \
  && apt-get clean \

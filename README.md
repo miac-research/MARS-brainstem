@@ -22,7 +22,7 @@ In general, we recommend the nnU-Net algorithm (please see our publication for a
 
 ### Hardware requirements
 
-While the inference can be run on CPU (>8 cores recommended), an NVIDIA GPU will greatly accelerate the calculation. The pre-built images use CUDA 12 and can thus support a wide range of NVIDIA GPUs from compute capability 5.0 (Maxwell generation, 2014) to 12.0 (Blackwell generation, 2024) for the nnU-Net method. Please note that for the MD-GRU method, support is currently limited to compute capability 5.0 to 9.0 (Hopper generation, 2022). A minimum of 8 GB GPU memory is required.
+While the inference can be run on CPU (>8 cores recommended), an NVIDIA GPU will greatly accelerate the calculation. The pre-built images use CUDA 12 and can thus support a wide range of NVIDIA GPUs from compute capability 5.0 (Maxwell generation, 2014) to 9.0 (Hopper generation, 2022). The nnU-Net method should also work up to compute capability 12.0 (Blackwell generation, 2024), but this is untested. Please report any errors you encounter on the [Issues page](https://github.com/miac-research/MARS-brainstem/issues). A minimum of 8 GB GPU memory is required.
 
 ### nnU-Net algorithm using Apptainer
 

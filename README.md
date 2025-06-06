@@ -16,18 +16,25 @@ Please ensure to cite this publication when using the methods, and please note t
 
 ## Using the pre-built container images
 
-Ready-to-use, pre-built images are available for download from the [Github container registry](https://github.com/miac-research/dl-brainstem/packages). The images have been tested with Apptainer and Docker. 
+Ready-to-use, pre-built images are available for download from the [Github container registry](https://github.com/miac-research/dl-brainstem/packages). The images have been tested with Apptainer and Docker. Please refer to the instructions below for usage guidance.
 
-In general, we recommend the nnU-Net algorithm (please see our publication for a detailed comparison between the two algorithms) and using Apptainer (the standard container tool for scientific computing).
+In general, we recommend the nnU-Net algorithm (please see our publication for a detailed comparison between the two methods) and using Apptainer (the standard container tool for scientific computing).
 
 ### Data requirements
 
-The brainstem segmentation requires **only one input, a 3D T1-weighted image** (e.g., MPRAGE, FSPGR, FFE) in NIfTI-1 data format. We recommend [dcm2niix](https://github.com/rordenlab/dcm2niix) for DICOM to NIfTI conversion. Importantly, the image must have been acquired without the use of a contrast agent. Check that the brainstem is sufficiently covered by the field of view.  
+The brainstem segmentation requires **only one input, a 3D T1-weighted image** (e.g., MPRAGE, FSPGR, FFE) in NIfTI-1 data format. We recommend [dcm2niix](https://github.com/rordenlab/dcm2niix) for DICOM to NIfTI conversion. Importantly, the image must have been acquired **without the use of a contrast agent**. Check that the brainstem is sufficiently covered by the field of view.  
 The recommended resolution is 1 mm isotropic. Images with a different resolution will be resliced to 1mm isotropic before prediction, brainstem masks are returned in the original resolution. In case your image data deviates from 1 mm isotropic resolution, check the output carefully.
 
 ### Hardware requirements
 
-While the inference can be run on CPU (>8 cores recommended), an NVIDIA GPU will greatly accelerate the calculation. The pre-built images use CUDA 12 and can thus support a wide range of NVIDIA GPUs from compute capability 5.0 (Maxwell generation, 2014) to 9.0 (Hopper generation, 2022). The nnU-Net method should also work up to compute capability 12.0 (Blackwell generation, 2024), but this is untested. Please report any errors you encounter on the [Issues page](https://github.com/miac-research/MARS-brainstem/issues). A minimum of 8 GB GPU memory is required.
+While the inference can be run on CPU (>8 cores recommended), an NVIDIA GPU will greatly accelerate the calculation. The pre-built images support a wide range of NVIDIA GPUs, depending on the method used:
+
+- nnU-Net method: Compute capabilies from 7.5 (Turing, 2018) to 12.0 (Blackwell, 2024)
+- MD-GRU method: Compute capabilies from 5.0 (Maxwell, 2014) to 9.0 (Hopper, 2022)
+
+> [!NOTE]
+> [Legacy GPUs](https://developer.nvidia.com/cuda-legacy-gpus), such as the GTX 1080 or V100, are only compatible with the MD-GRU method or an older version ([1.0.3](https://github.com/miac-research/MARS-brainstem/pkgs/container/brainstem-nnunet/379140994?tag=1.0.3)) of the nnU-Net method.  
+> The latest GPUs, like the RTX 5090, are only supported by the current (version ≥1.0.4) nnU-Net method, and are not compatible with MD-GRU.
 
 ### nnU-Net algorithm using Apptainer
 
@@ -87,11 +94,11 @@ docker run --rm mars-brainstem-mdgru:latest -h
 
 If you prefer to build the container images yourself, you can use the provided Dockerfiles in the `mdgru` and `nnunet` folders.
 
-1. Download the mdgru or nnunet Dockerfile and place it into a folder.
-2. In this folder, run `docker build -t brainstem-{mdgru/nnunet} .`
+1. Download the corresponding Dockerfile and place it into a folder.
+2. In this folder, run `docker build -t mars-brainstem-{mdgru/nnunet} .`
 
 > [!NOTE]
-> During building, multiple external sources need to be used, e.g., base images are downloaded from the NVIDIA NGC registry, scripts are download from this Github repository, and larger model files are downloaded from Zenodo. Make sure you can access all required external sources in your build environment.
+> During building, multiple external sources need to be used, e.g., base images are downloaded from the NVIDIA NGC registry, scripts are downloaded from this Github repository, and larger model files from Zenodo. Make sure you can access all required external sources in your build environment.
 
 ## Licenses of redistributed software
 
@@ -104,4 +111,4 @@ Please note the license terms of software components that we redistribute within
 
 Development and maintenance of this software is funded by the [Medical Image Analysis Center (MIAC AG)](https://miac.swiss).
 
-[![MIAC Logo](http://miac.swiss/gallery/normal/116/miaclogo@2x.png)](https://miac.swiss)
+[![MIAC Logo](images/miaclogo@2x.png)](https://miac.swiss)

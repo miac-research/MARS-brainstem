@@ -27,11 +27,15 @@ The recommended resolution is 1 mm isotropic. Images with a different resolution
 
 ### Hardware requirements
 
-While the inference can be run on CPU (>8 cores recommended), an NVIDIA GPU will greatly accelerate the calculation. The pre-built images support a wide range of NVIDIA GPUs from compute capability 5.0 (Maxwell, 2014) to 12.0 (Blackwell, 2024).
+While the inference can be run on CPU (>8 cores recommended), an NVIDIA GPU will greatly accelerate the calculation. The pre-built images support a wide range of NVIDIA GPUs from compute capability 5.0 (Maxwell, 2014) to 12.0 (Blackwell, 2024), please see the table for details:
 
-> [!NOTE]
-> For [legacy GPUs](https://developer.nvidia.com/cuda-legacy-gpus), such as the GTX 1080 or V100, use MD-GRU or an older version ([1.0.3](https://github.com/miac-research/MARS-brainstem/pkgs/container/brainstem-nnunet/379140994?tag=1.0.3)) of the nnU-Net method.  
-> The latest Blackwell GPUs, such as the RTX 5090, are fully supported by recent versions (≥1.0.4) of the nnU-Net method. Additionally, while not officially supported, our testing indicates that the MD-GRU method also runs on Blackwell.
+| NVIDIA CUDA Compute Capability          | nnU-Net image | MD-GRU image |
+| --------------------------------------- | ------------- | ------------ |
+| 12.0 (Blackwell, 2024)                  | supported     | limited*     |
+| 7.5 (Turing, 2018) – 9.0 (Hopper, 2022) | supported     | supported    |
+| 5.0 (Maxwell, 2014) – 7.0 (Volta, 2017) | only [v1.0.3](https://github.com/miac-research/MARS-brainstem/pkgs/container/brainstem-nnunet/379140994?tag=1.0.3) | supported |
+
+*While not officially supported, our testing indicates that the MD-GRU image (≥v1.0.4) can run on Blackwell.
 
 ### nnU-Net algorithm using Apptainer
 

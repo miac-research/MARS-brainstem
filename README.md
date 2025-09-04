@@ -105,13 +105,13 @@ docker run --rm mars-brainstem-mdgru:latest -h
 
 ## Building the container images yourself
 
-If you prefer to build the container images yourself, you can use the provided Dockerfiles in the `mdgru` and `nnunet` folders.
+If you prefer to build the container images yourself, you can use the provided files in the `mdgru` and `nnunet` folders.
 
-1. Download the corresponding Dockerfile and place it into a folder.
+1. Download the corresponding files (Dockerfile and Python script) and place them into a folder.
 2. In this folder, run `docker build -t mars-brainstem-{mdgru/nnunet} .`
 
 > [!NOTE]
-> During building, multiple external sources need to be used, e.g., base images are downloaded from the NVIDIA NGC registry, scripts are downloaded from this Github repository, and larger model files from Zenodo. Make sure you can access all required external sources in your build environment.
+> During building, multiple external sources need to be used, e.g., base images are downloaded from  NVIDIA NGC (which might require authentication) or Dockerhub, and larger model files from Zenodo. Make sure you can access all required external sources in your build environment.
 
 ## Licenses of redistributed software
 

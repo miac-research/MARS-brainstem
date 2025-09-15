@@ -77,7 +77,7 @@ def nnunet_prediction(t1, verbose=True):
         if verbose: print(output.stdout.decode("utf-8"))
 
     # expected output filenames is constructed by removing modality index
-    labelmap = re.sub('_0000(\.nii(\.gz)?)$', '.nii.gz', t1)
+    labelmap = re.sub(r'_0000(\.nii(\.gz)?)$', '.nii.gz', t1)
         
     return labelmap
 
@@ -93,7 +93,7 @@ def pipeline_nnunet(t1, brainstem_mask, verbose=True):
         print('Output label map exists already and will be overwritten')
 
     strRand = ''.join(random.choices(string.ascii_lowercase + string.digits, k=8))
-    dirTemp = re.sub('\.nii(\.gz)?$', '_temp-'+strRand, brainstem_mask)
+    dirTemp = re.sub(r'\.nii(\.gz)?$', '_temp-'+strRand, brainstem_mask)
     if verbose: print(f"Creating temporary folder for processing:\n"
                       f"  {dirTemp}")
     if os.path.exists(dirTemp):
@@ -103,7 +103,7 @@ def pipeline_nnunet(t1, brainstem_mask, verbose=True):
     # Copy T1 image to a temporary folder, adding suffix "_0000" as modality identifier for nnU-Net
     Path(dirTemp).mkdir(parents=True)
     t1_in = t1
-    fname_modality = re.sub('(\.nii(\.gz)?)$', '_0000\\1', basename(t1))
+    fname_modality = re.sub(r'(\.nii(\.gz)?)$', '_0000\\1', basename(t1))
     t1 = join(dirTemp, fname_modality)
     copy2(src=t1_in, dst=t1)
     
@@ -168,8 +168,8 @@ def isNIfTI(s):
         raise argparse.ArgumentTypeError("File path does not exist or is not compressed NIfTI. Please check: %s"%(s))
     
 def isSuffix(s):
-    if len(re.sub('\.nii(\.gz)?$', '', s)) > 0:
-        return re.sub('\.nii(\.gz)?$', '', s)
+    if len(re.sub(r'\.nii(\.gz)?$', '', s)) > 0:
+        return re.sub(r'\.nii(\.gz)?$', '', s)
     else:
         raise argparse.ArgumentTypeError("String is not suited as suffix. Please check: %s"%(s))
     
@@ -212,7 +212,7 @@ if __name__ == "__main__":
     if args.fnOut:
         assert args.fnOut.endswith('.nii.gz'), f'Provided output file extension has to be ".nii.gz". Please check: {args.fnOut}'
     else:
-        args.fnOut = re.sub('\.nii(\.gz)?$', '', args.fnT1) + args.suffix + '.nii.gz'
+        args.fnOut = re.sub(r'\.nii(\.gz)?$', '', args.fnT1) + args.suffix + '.nii.gz'
     if args.dirOut:
         args.fnOut = join(args.dirOut, basename(args.fnOut))
 

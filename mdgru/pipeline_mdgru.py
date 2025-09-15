@@ -141,7 +141,7 @@ def pipeline_mdgru(t1, brainstem_mask, verbose=True):
         print('Output label map exists already and will be overwritten')
 
     strRand = ''.join(random.choices(string.ascii_lowercase + string.digits, k=8))
-    dirTemp = re.sub('\.nii(\.gz)?$', '_temp-'+strRand, brainstem_mask)
+    dirTemp = re.sub(r'\.nii(\.gz)?$', '_temp-'+strRand, brainstem_mask)
     if verbose: print(f"Creating temporary folder for processing:\n"
                       f"  {dirTemp}")
     if os.path.exists(dirTemp):
@@ -260,8 +260,8 @@ def isNIfTI(s):
         raise argparse.ArgumentTypeError("File path does not exist or is not compressed NIfTI. Please check: %s"%(s))
     
 def isSuffix(s):
-    if len(re.sub('\.nii(\.gz)?$', '', s)) > 0:
-        return re.sub('\.nii(\.gz)?$', '', s)
+    if len(re.sub(r'\.nii(\.gz)?$', '', s)) > 0:
+        return re.sub(r'\.nii(\.gz)?$', '', s)
     else:
         raise argparse.ArgumentTypeError("String is not suited as suffix. Please check: %s"%(s))
 
@@ -304,7 +304,7 @@ if __name__ == "__main__":
     if args.fnOut:
         assert args.fnOut.endswith('.nii.gz'), f'Provided output file extension has to be ".nii.gz". Please check: {args.fnOut}'
     else:
-        args.fnOut = re.sub('\.nii(\.gz)?$', '', args.fnT1) + args.suffix + '.nii.gz'
+        args.fnOut = re.sub(r'\.nii(\.gz)?$', '', args.fnT1) + args.suffix + '.nii.gz'
     if args.dirOut:
         args.fnOut = join(args.dirOut, basename(args.fnOut))
 

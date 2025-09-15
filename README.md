@@ -6,7 +6,7 @@ This repository includes ready-to-use, pre-built container images of two methods
 
 The methods are described in detail in the following publication: 
  
-> **B. Gesierich, L. Sander, et al. 2025. Extended technical and clinical validation of deep learning-based brainstem segmentation for application in neurodegenerative diseases. Human Brain Mapping. DOI: [10.1002/hbm.70141](https://doi.org/10.1002/hbm.70141).**
+> **B. Gesierich, L. Sander, et al. (2025). Extended technical and clinical validation of deep learning-based brainstem segmentation for application in neurodegenerative diseases. Human Brain Mapping. DOI: [10.1002/hbm.70141](https://doi.org/10.1002/hbm.70141).**
 
 Please ensure to cite this publication when using the methods, and please note that the license does not cover any commercial use (defined as use for which any financial return is received). Please also cite the underlying deep learning method (nnU-Net, DOI: [10.1038/s41592-020-01008-z](https://doi.org/10.1038/s41592-020-01008-z) or MD-GRU, DOI: [10.1007/978-3-319-75238-9_3](https://doi.org/10.1007/978-3-319-75238-9_3)).
 
@@ -111,7 +111,7 @@ If you prefer to build the container images yourself, you can use the provided f
 2. In this folder, run `docker build -t mars-brainstem-{mdgru/nnunet} .`
 
 > [!NOTE]
-> During building, multiple external sources need to be used, e.g., base images are downloaded from  NVIDIA NGC (which might require authentication) or Dockerhub, and larger model files from Zenodo. Make sure you can access all required external sources in your build environment.
+> During building, multiple external sources need to be used, e.g., base images are downloaded from NVIDIA NGC (which might require authentication) or Dockerhub, and larger model files from Zenodo. Make sure you can access all required external sources in your build environment.
 
 ## Licenses of redistributed software
 
@@ -122,6 +122,6 @@ Please note the license terms of software components that we redistribute within
 
 ## Funding
 
-Development and maintenance of this software is funded by the [Medical Image Analysis Center (MIAC AG)](https://miac.swiss).
+Development and maintenance of this software is funded by the Medical Image Analysis Center (MIAC AG).
 
-[![MIAC Logo](images/miaclogo@2x.png)](https://miac.swiss)
+![MIAC Logo](images/miaclogo@2x.png)

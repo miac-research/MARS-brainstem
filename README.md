@@ -14,7 +14,7 @@ Please ensure to cite this publication when using the methods, and please note t
 > These methods are **NOT medical devices** and **for non-commercial, academic research use only!** 
 > Do NOT use these methods for diagnosis, prognosis, monitoring or any other purposes in clinical use.
 
-## TLDR;
+## TL;DR
 
 Detailed instructions are provided below. Here is the quick start version:
 

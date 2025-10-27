@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Aggregate PSMD2 result tables across subjects/patients
+Extract voxel count, volume and cluster count for the segmented brainstem and its subregions from (multiple) NIfTI files, corresponding to
+differnt patients and containing MARS segmentation label-maps, and aggregate these statistics across files into a single table.
 """
 
 import sys, os, glob, argparse, re, time
 import nibabel as nib
-import numpy as np
 import numpy as np
 import pandas as pd
 from scipy import ndimage

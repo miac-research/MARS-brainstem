@@ -113,6 +113,13 @@ If you prefer to build the container images yourself, you can use the provided f
 > [!NOTE]
 > During building, multiple external sources need to be used, e.g., base images are downloaded from NVIDIA NGC (which might require authentication) or Dockerhub, and larger model files from Zenodo. Make sure you can access all required external sources in your build environment.
 
+## Extracting brainstem volumes from segmented images
+
+The script `MARS-brainstem_extract_volumes.py` allows you to extract and aggregate the voxel count, volume and cluster count of the segmented brainstem and its subregions from one or more NIfTI files corresponding to MARS segmentation label-maps.  
+The minimum input required is the directory in which the data for one or more patients has been segmented. For complete usage information, call the script without any arguments.  
+Run the script in your local Python environment or use Apptainer and run the script within the MARS-brainstem container with its Python installation, e.g.:  
+`apptainer exec -B /path/to/segmented/data mars-brainstem-nnunet.sif python MARS-brainstem_extract_volumes.py /path/to/segmented/data`
+
 ## Licenses of redistributed software
 
 Please note the license terms of software components that we redistribute within our container images:
